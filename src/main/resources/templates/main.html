@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    form, h1 {
+        text-align: center;
+        margin-top: 30px;
+    }
+    form div {
+        /*border: 1px solid black;*/
+    }
+    button: {
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <h1>Ипотека или Аренда?</h1>
+
+    <form method="post" action="/">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    Срок, лет
+                    <input type="number" name="time" placeholder="10">
+                </div>
+                <div class="col-6">
+                    <h3>Ипотека</h3>
+                    Стоимость квартиры, руб
+                    <input type="number" name="price" placeholder="5000000"><br>
+                    Первоначальный взнос, руб
+                    <input type="number" name="first" placeholder="1000000"><br>
+                    Ставка по ипотеке, %
+                    <input type="number" name="rate" placeholder="10">
+                </div>
+                <div class="col-6">
+                    <h3>Аренда</h3>
+                    Стоимость аренды, руб
+                    <input type="number" name="rent" placeholder="20000">
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-dark">Посчитать</button>
+            </div>
+        </div>
+        </div>
+    </form>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Ипотека</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Ежемесячный платеж</th>
+                            <td th:text="${pay}"/>
+                        </tr>
+                        <tr>
+                            <th scope="row">Итоговая стоимость</th>
+                            <td th:text="${total}"/>
+                        </tr>
+                        <tr>
+                            <th scope="row">Переплата</th>
+                            <td th:text="${overpay}"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Аренда</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Ежемесечная разница с ипотекой</th>
+                            <td>???</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Накопления за год</th>
+                            <td>???</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Накопления за весь срок</th>
+                            <td>???</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
