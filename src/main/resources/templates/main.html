@@ -10,11 +10,26 @@
         text-align: center;
         margin-top: 30px;
     }
-    form div {
-        /*border: 1px solid black;*/
-    }
-    button: {
+    button {
         margin: 0 auto;
+    }
+    input {
+        border-radius: 3px;
+        border: 1px solid #343a40;
+        padding: 4px 12px;
+    }
+    .mid {
+        text-align: right;
+    }
+    h3 {
+        text-align: center;
+    }
+    label {
+        cursor: pointer;
+    }
+    .red {
+        color: darkred;
+        font-weight: bold;
     }
 </style>
 <body>
@@ -24,22 +39,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    Срок, лет
-                    <input type="number" name="time" placeholder="10">
+                    <label for="years" title="Срок ипотеки или аренды">Срок, лет</label>
+                    <input type="number" name="years" id="years" placeholder="10">
                 </div>
-                <div class="col-6">
+                <div class="col-5 mid">
                     <h3>Ипотека</h3>
-                    Стоимость квартиры, руб
-                    <input type="number" name="price" placeholder="5000000"><br>
-                    Первоначальный взнос, руб
-                    <input type="number" name="first" placeholder="1000000"><br>
-                    Ставка по ипотеке, %
-                    <input type="number" name="rate" placeholder="10">
+                    <div>
+                        <label for="loan" title="Сумма кредита, без первоначального взноса">Размер кредита, руб</label>
+                        <input type="number" name="loan" id="loan" placeholder="4000000">
+                    </div>
+                    <div>
+                        <label for="rate" title="Ежегодная процентаная ставка">Ставка по ипотеке, %</label>
+                        <input type="number" name="rate" id="rate" placeholder="10">
+                    </div>
                 </div>
-                <div class="col-6">
+                <div class="col-2"></div>
+                <div class="col-5 mid">
                     <h3>Аренда</h3>
-                    Стоимость аренды, руб
-                    <input type="number" name="rent" placeholder="20000">
+                    <div>
+                        <label for="rent" title="Ежемесечная арендная стоимость">Стоимость аренды, руб</label>
+                        <input type="number" name="rent" id="rent" placeholder="24000">
+                    </div>
+                    <div>
+                        <label for="percent" title="Вкладу, на который мы будем откладывать разницу между ипотекой и арендой">Ставка по вкладу, %</label>
+                        <input type="number" name="percent" id="percent" placeholder="6">
+                    </div>
                 </div>
             </div>
         <div class="row">
@@ -71,7 +95,7 @@
                         </tr>
                         <tr>
                             <th scope="row">Переплата</th>
-                            <td th:text="${overpay}"/>
+                            <span><td th:text="${overpay}" class="red"/></span>
                         </tr>
                     </tbody>
                 </table>
@@ -88,15 +112,15 @@
                     <tbody>
                         <tr>
                             <th scope="row">Ежемесечная разница с ипотекой</th>
-                            <td>???</td>
+                            <td th:text="${diff}"/>
                         </tr>
                         <tr>
                             <th scope="row">Накопления за год</th>
-                            <td>???</td>
+                            <td th:text="${msave}"/>
                         </tr>
                         <tr>
                             <th scope="row">Накопления за весь срок</th>
-                            <td>???</td>
+                            <td th:text="${ysave}" class="red"/>
                         </tr>
                     </tbody>
                 </table>
